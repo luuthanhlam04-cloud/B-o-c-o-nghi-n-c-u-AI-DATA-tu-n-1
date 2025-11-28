@@ -1,127 +1,107 @@
-# Nghiên cứu tìm hiểu về Data - Tuần 1
-## I. Linux cơ bản
+# Nghiên cứu tìm hiểu về AI - Tuần 1
+## I. Giới thiệu về AI
 
-### 1. Khái niệm
-* **Hệ điều hành nhân Linux:** Là một kernel (nhân hệ điều hành) mã nguồn mở do Linus Torvalds khởi tạo vào năm 1991.
-* Kernel này được sử dụng làm nền tảng để xây dựng nhiều bản phân phối Linux như Ubuntu, Debian, Fedora, CentOS.
+### 1. Khái niệm và Phân loại
+* **Định nghĩa:** AI là tập hợp các phương pháp, thuật toán và hệ thống giúp máy tính thực hiện các nhiệm vụ cần trí tuệ con người như nhận diện, suy luận, học từ dữ liệu và ra quyết định.
+* **Kỹ thuật:** Bao gồm mô hình toán học, thống kê và tối ưu hóa để tìm quy luật từ dữ liệu hoặc môi trường.
 
-### 2. Cấu trúc hệ thống tệp tin
-Tuân theo tiêu chuẩn phân cấp hệ thống tập tin chuẩn:
-* `/`: Gốc thư mục, chứa toàn bộ hệ thống.
-* `/home`: Thư mục chứa dữ liệu người dùng (mỗi người dùng có một thư mục riêng).
-* `/etc`: Chứa tệp cấu hình hệ thống và cấu hình dịch vụ.
-* `/var`: Chứa dữ liệu thay đổi thường xuyên như log, cache.
-* `/usr`: Chứa chương trình, thư viện, tài liệu dùng chung cho toàn hệ thống.
+### 2. Các lĩnh vực chính
+* **Machine Learning (ML):** Thuật toán học từ dữ liệu để dự đoán/phân loại thay vì lập trình thủ công. Gồm: Học có giám sát, Học không giám sát, Học bán giám sát, Học tăng cường.
+* **Deep Learning (DL):** Tập con của ML dùng mạng nơ-ron nhiều lớp để học biểu diễn phức tạp từ dữ liệu thô (ảnh, âm thanh).
+* **Xử lý ngôn ngữ tự nhiên (NLP):** Phân tích cú pháp, cảm xúc, dịch máy, tóm tắt văn bản.
+* **Thị giác máy tính (Computer Vision):** Phân loại, phát hiện, phân đoạn ảnh, tái tạo 3D.
+* **Robotics:** Kết hợp nhận thức, lập kế hoạch và điều khiển để robot tương tác với thế giới thực.
+* **Hệ chuyên gia (Knowledge-based systems):** Suy luận dựa trên luật hoặc biểu diễn tri thức.
 
-### 3. Các lệnh cơ bản
-* `ls`: Liệt kê thư mục/tập tin.
-* `cd`: Chuyển thư mục.
-* `pwd`: In đường dẫn hiện tại.
-* `cp`: Sao chép (nguồn -> đích).
-* `mv`: Di chuyển hoặc đổi tên.
-* `rm`: Xóa tập tin; `rm -r`: Xóa thư mục và nội dung.
+### 3. Ứng dụng thực tế
+* **Nhận diện khuôn mặt:** Dùng DL để phân biệt người.
+* **Chatbot/Trợ lý ảo:** Dùng NLP để quản lý hội thoại và thực hiện tác vụ.
+* **Hệ gợi ý:** Dùng lịch sử người dùng để dự đoán sản phẩm phù hợp.
+* **Phát hiện gian lận:** Dùng Anomaly detection để tìm hành vi bất thường.
+* **Xe tự lái:** Tích hợp CV, định vị, lập kế hoạch và điều khiển.
+* **Y tế:** Phân tích ảnh y khoa phát hiện tổn thương.
+* **Tự động hóa sản xuất:** Robot nhận diện lỗi, tối ưu năng suất.
 
-### 4. Quản lý người dùng và quyền
-* **chmod**: Thay đổi quyền truy cập (read - r, write - w, execute - x).
-    * *Ví dụ:* `chmod 755 script.sh` (Đặt quyền đọc+ghi+chạy cho chủ sở hữu và chỉ đọc+chạy cho nhóm và người khác).
-* **chown**: Thay đổi chủ sở hữu tập tin/thư mục.
-    * *Ví dụ:* `chown user1:group1 data.txt`.
+## II. Dữ liệu (Data)
 
-## II. Linux thao tác nâng cao
+### 1. Định nghĩa và Phân loại
+* **Định nghĩa:** Tập các quan sát/bản ghi (số, văn bản, ảnh, tín hiệu...).
+* **Cấu trúc:**
+    * Structured: Bảng, CSDL, cột rõ ràng.
+    * Unstructured: Văn bản, ảnh, video.
+    * Semi-structured: JSON, XML.
 
-### 1. Quản lý Process (Tiến trình)
-* `ps aux`: Liệt kê tất cả tiến trình (bao gồm PID, CPU sử dụng, RAM).
-* `top`: Theo dõi tiến trình theo thời gian thực.
-* `kill PID`: Gửi tín hiệu để dừng quá trình (dùng khi cần kết thúc tiến trình).
-* `kill -9 PID`: Buộc dừng ngay lập tức bằng SIGKILL (chỉ dùng khi tiến trình không phản hồi).
+### 2. Vai trò của dữ liệu trong AI
+1.  **Nguồn học:** Mô hình tối ưu tham số dựa trên dữ liệu huấn luyện.
+2.  **Chất lượng:** Dữ liệu sai lệch dẫn đến mô hình sai (Garbage in - Garbage out).
+3.  **Số lượng & Đa dạng:** Cần lượng lớn dữ liệu để học biểu diễn phức tạp và giảm overfitting.
+4.  **Nhãn (Label):** Nhãn chất lượng cao quyết định độ chính xác của học có giám sát.
+5.  **Cân bằng & Thiên lệch:** Dữ liệu mất cân bằng (imbalance) gây thiên vị cho mô hình.
+6.  **Tiền xử lý:** Cần làm sạch, chuẩn hóa, trích xuất đặc trưng.
+7.  **Chia tách:** Tách tập train/validation/test để đánh giá hiệu suất.
+8.  **Concept Drift:** Cần cập nhật dữ liệu mới khi môi trường thay đổi.
+9.  **Pháp lý & Chi phí:** Tuân thủ quyền riêng tư (GDPR) và tối ưu chi phí thu thập/lưu trữ.
 
-### 2. Package Manager
-Công cụ cài đặt, cập nhật, gỡ bỏ phần mềm dựa trên kho gói (repository).
-* **apt** (Ubuntu/Debian): Kiểm tra phụ thuộc, tải gói, cài đặt file nhị phân và cấu hình.
-    * `sudo apt update`: Chỉ cập nhật danh sách gói.
-    * `sudo apt install tên_gói`: Tải và cài gói từ kho chính thức.
-* **yum** (CentOS/RHEL): Hoạt động tương tự nhưng dựa trên kiến trúc RPM.
+## III. Phân loại bài toán Machine Learning
 
-### 3. Cron Job & Log
-* **Cron job**: Hệ thống dịch vụ chạy tác vụ theo lịch.
-    * `crontab -e`: Mở tệp cấu hình cron hiện tại của người dùng.
-    * Một dòng cron gồm 5 trường thời gian, kiểm tra từng phút để xác định lệnh chạy.
-* **Log**:
-    * `sudo tail -f /var/log/syslog`: Cho phép xem nhật ký dòng mới nhất theo thời gian thực.
+| Tiêu chí | Học có giám sát (Supervised) | Học không giám sát (Unsupervised) | Học tăng cường (Reinforcement) |
+| :--- | :--- | :--- | :--- |
+| **Dữ liệu** | Có nhãn $(X, y)$ | Không nhãn (chỉ $X$) | Trạng thái từ môi trường |
+| **Mục tiêu** | Dự đoán output từ input | Tìm cấu trúc/mẫu ẩn | Tối đa hóa phần thưởng |
+| **Cách học** | Tối ưu sai số so với nhãn thật | Phân tích phân bố/mật độ | Thử - sai, phản hồi reward |
+| **Đầu ra** | Phân loại, Hồi quy | Cụm, luật kết hợp | Chính sách hành động |
+| **Ví dụ** | Dự đoán giá nhà, spam | Phân cụm khách hàng | Chơi game, robot |
 
-## III. SQL cơ bản và trung cấp
+## IV. Thuật ngữ và Ký hiệu
 
-**Khái niệm:** SQL (Structured Query Language) là ngôn ngữ chuẩn để làm việc với hệ thống cơ sở dữ liệu qua các lệnh SELECT, INSERT, UPDATE, DELETE.
+* **Dữ liệu:** Dataset, Sample, Feature ($x$), Label ($y$), Training/Test set.
+* **Mô hình:** Model $f(x)$, Parameters $\theta$, Architecture, Capacity.
+* **Huấn luyện:** Loss function $L$, Gradient Descent, Learning rate $\alpha$, Epoch, Batch, Overfitting/Underfitting.
+* **Supervised:** Classification, Regression, Metrics (Accuracy, Precision, Recall, F1, MSE).
+* **Unsupervised:** Clustering, Centroid, Dimensionality Reduction (PCA).
+* **Deep Learning:** Neuron, Layer, Activation function, Backpropagation, CNN, RNN, Transformer.
+* **Reinforcement Learning:** Agent, Environment, State ($s$), Action ($a$), Reward ($r$), Policy ($\pi$), Q-value.
+* **Toán học:** Expectation, Variance, Likelihood, Bias-Variance Tradeoff.
 
-### 1. Các khái niệm về RDBMS
-* **Schema**: Nơi tổ chức dữ liệu trong một CSDL (chứa bảng, view, hàm). Giúp phân nhóm và phân tách các phần của hệ thống.
-* **Table**: Bảng dữ liệu gồm hàng và cột. Mỗi cột có kiểu dữ liệu định nghĩa.
-* **Primary Key (PK)**: Cột hoặc nhóm cột dùng để định danh duy nhất trên mỗi dòng (Không trùng lặp, không rỗng).
-* **Foreign Key (FK)**: Cột tham chiếu tới khóa chính của bảng khác để đảm bảo tính nhất quán dữ liệu.
+## V. Các thư viện phổ biến
 
-### 2. CRUD cơ bản
-Bao gồm 4 hoạt động chính:
-* **C**reate: `INSERT` (thêm dữ liệu).
-* **R**ead: `SELECT` (truy vấn dữ liệu).
-* **U**pdate: `UPDATE` (chỉnh sửa dữ liệu).
-* **D**elete: `DELETE` (xóa dữ liệu).
+1.  **Numpy:**
+    * Tính toán số học, đại số tuyến tính, mảng/ma trận hiệu quả.
+    * Nền tảng cho Pandas, PyTorch.
+2.  **Pandas:**
+    * Xử lý dữ liệu dạng bảng (DataFrame), lọc, nhóm, phân tích.
+    * Hỗ trợ nhiều nguồn (CSV, Excel, SQL).
+3.  **Matplotlib:**
+    * Vẽ biểu đồ 2D (line, scatter, bar).
+    * Tùy chỉnh linh hoạt nhưng cú pháp phức tạp.
+4.  **PyTorch:**
+    * Thư viện Deep Learning, hỗ trợ GPU, tính toán gradient tự động.
+    * Dễ học, cú pháp giống Python.
 
-### 3. JOIN
-Dùng để hợp nhất dữ liệu từ nhiều bảng dựa trên quan hệ PK-FK.
-* **INNER JOIN**: Trả về chỉ các dòng có từ khóa phù hợp ở cả hai bảng.
-* **LEFT JOIN**: Giữ toàn bộ dòng bên trái, kể cả khi không có dòng tương ứng bên phải.
+## VI. Nguồn dữ liệu và Nền tảng
 
-### 4. GROUP BY và các hàm chuẩn
-* **GROUP BY**: Gom các dòng có cùng giá trị tại một hoặc nhiều cột thành từng nhóm.
-* **Các hàm tổng hợp (Aggregations)**:
-    * `COUNT(*)`: Đếm số dòng trong nhóm.
-    * `COUNT(cột)`: Đếm số dòng không có cột null.
-    * `SUM(cột)`: Tổng giá trị của cột.
-    * `AVG(cột)`: Trung bình cộng.
-    * `MAX(cột)` / `MIN(cột)`: Giá trị lớn nhất / nhỏ nhất.
+### 1. Phân loại nguồn dữ liệu
+* Nguồn mở (Open Data), Cộng đồng, API công khai, Doanh nghiệp.
+* Thu thập thủ công: Web scraping, khảo sát, IoT.
 
-## IV. SQL nâng cao
+### 2. Nền tảng nổi bật
+* **Kaggle:** Kho dữ liệu lớn và cuộc thi ML. Các dataset: Titanic, House Prices, MNIST, CIFAR-10, Netflix.
+* **Hugging Face:** Nền tảng mã nguồn mở cho NLP/Multimodal. Cung cấp Model Hub, Dataset Hub, Transformers Library.
 
-### 1. Transactions và ACID
-* **Transaction**: Tập hợp nhiều câu lệnh SQL được xử lý như một đơn vị (Nếu 1 bước lỗi, toàn bộ bị hoàn tác).
-* **ACID** (4 tính chất chuẩn):
-    * *Atomicity*: Tất cả bước đều thực hiện hoặc không có bước nào được áp dụng.
-    * *Consistency*: Dữ liệu sau transaction phải tuân thủ ràng buộc.
-    * *Isolation*: Mỗi transaction không gây ảnh hưởng trung gian lên transaction khác.
-    * *Durability*: Khi commit, dữ liệu được ghi bền vững.
-* **Isolation levels**: Read Uncommitted, Read Committed, Repeatable Read, Serializable (mức cô lập cao nhất).
+## VII. Phân tích dữ liệu sơ bộ (EDA)
 
-### 2. Indexing và tối ưu truy vấn
-* **Index**: Cấu trúc dữ liệu (thường là B-Tree) giúp tìm kiếm nhanh hơn.
-    * *Lợi ích*: Giảm thời gian quét bảng khi WHERE, JOIN, ORDER BY.
-    * *Hạn chế*: Tăng chi phí khi INSERT/UPDATE/DELETE.
-* **Query optimization**:
-    * Tạo index trên cột dùng trong WHERE, JOIN.
-    * Tránh `SELECT *` nếu không cần.
-    * Dùng `EXPLAIN` để xem kế hoạch truy vấn (check xem engine dùng index hay scan toàn bảng).
+**Khái niệm:** Phương pháp tiếp cận để hiểu bản chất dữ liệu trước khi mô hình hóa.
 
-### 3. Backup/Restore DB
-* **Backup**: Sao lưu toàn bộ dữ liệu để phòng mất mát.
-* **Restore**: Khôi phục lại từ file backup.
+### 1. Hiểu dữ liệu (Data Understanding)
+* Kiểm tra cấu trúc (Shape), loại dữ liệu (Types).
+* Đánh giá chất lượng: Giá trị thiếu (Missing), Trùng lặp (Duplicates), Tính nhất quán.
 
-## V. NoSQL
+### 2. Phân tích dữ liệu (Data Analysis)
+* Xu hướng tập trung: Mean, Median, Mode.
+* Độ phân tán: Variance, Std Dev, Range.
+* Phân phối: Skewness, Kurtosis.
+* Tương quan: Hệ số Pearson, Spearman.
 
-**Tổng quan:** Loại cơ sở dữ liệu không dùng mô hình quan hệ truyền thống (RDBMS), thường dùng cho dữ liệu lớn, phân tán hoặc cấu trúc linh hoạt.
-**DB Scripting:** Viết script để thao tác CRUD hoặc tác vụ tự động.
-
-**Các loại NoSQL phổ biến:**
-1.  **Key-value**: Lưu dạng cặp key-value (như dictionary), truy xuất nhanh theo key.
-2.  **Document**: Lưu dạng document (JSON, BSON), cấu trúc linh hoạt.
-3.  **Column**: Lưu theo cột, tối ưu cho bảng lớn nhiều cột nhưng ít truy vấn theo hàng.
-4.  **Graph**: Lưu dạng đồ thị, biểu diễn quan hệ phức tạp (mạng xã hội, đề xuất sản phẩm).
-
-## VI. DB Admin cơ bản
-
-Kiến thức quản lý DB đảm bảo hoạt động ổn định và an toàn.
-
-* **User & Role Management**:
-    * *User*: Tài khoản truy cập DB.
-    * *Role*: Nhóm quyền (permissions) gán cho user để kiểm soát hành động (SELECT, INSERT...).
-* **Restore/Replication Concepts**:
-    * *Restore*: Phục hồi dữ liệu từ backup khi gặp sự cố.
-    * *Replication*: Sao chép dữ liệu từ DB này sang DB khác, giúp tăng tính sẵn sàng và dự phòng.
+### 3. Trực quan hóa dữ liệu (Data Visualization)
+* **Đơn biến:** Histogram (phân phối), Boxplot (outliers), Bar chart.
+* **Đa biến:** Scatter Plot (quan hệ 2 biến), Heatmap (tương quan), Pair Plot.
